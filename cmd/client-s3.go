@@ -34,8 +34,8 @@ import (
 	"io/ioutil"
 
 	"github.com/minio/mc/pkg/httptracer"
-	"github.com/minio/minio-go"
-	"github.com/minio/minio-go/pkg/policy"
+	"github.com/ricoharisin91/minio-go"
+	"github.com/ricoharisin91/minio-go/pkg/policy"
 	"github.com/minio/minio/pkg/probe"
 )
 
