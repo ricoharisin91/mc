@@ -617,14 +617,7 @@ func (c Client) getObject(bucketName, objectName string, offset, length int64) (
 	// Parse the date.
 	date, err := time.Parse(http.TimeFormat, resp.Header.Get("Last-Modified"))
 	if err != nil {
-		msg := "Last-Modified time format not recognized. " + reportIssue
-		return nil, ObjectInfo{}, ErrorResponse{
-			Code:      "InternalError",
-			Message:   msg,
-			RequestID: resp.Header.Get("x-amz-request-id"),
-			HostID:    resp.Header.Get("x-amz-id-2"),
-			Region:    resp.Header.Get("x-amz-bucket-region"),
-		}
+		date, err = time.Parse("Mon, 02 Jan 2006 15:04:05 CET", resp.Header.Get("Last-Modified"))
 	}
 	// Get content-type.
 	contentType := strings.TrimSpace(resp.Header.Get("Content-Type"))
